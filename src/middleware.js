@@ -1,7 +1,17 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+ 
+import { NextResponse } from "next/server";
+import { CheckCookies } from "./app/lib/component/authFunction/CheckMiddleware";
 
-export default clerkMiddleware();
 
+export   function middleware(req,res,next){
+  if(req.nextUrl.pathname.startsWith("/dashboard")){
+      return CheckCookies(req)
+     
+   }
+   return NextResponse.next()
+      
+}
+ 
 
 
 export const config = {

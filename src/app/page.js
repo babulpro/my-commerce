@@ -1,7 +1,6 @@
-import { ClerkProvider, SignIn } from "@clerk/nextjs";
-import Image from "next/image";
+  
 import Link from "next/link";
-import MainNavbar from "./lib/component/utilityCom/MainNavbar";
+ 
 
 export default function Home() {
   return (

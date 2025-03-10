@@ -1,4 +1,4 @@
- import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+ 
 import Link from "next/link";
 import React from "react";
  
@@ -59,16 +59,8 @@ const MainNavbar =async () => {
   <div className="navbar-end">
     
   <div>
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton />
-              {/* <SignUpButton /> */}
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-        </div>
+    //button
+  </div>
 
         </div>
         </div>
