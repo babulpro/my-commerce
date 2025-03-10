@@ -1,4 +1,4 @@
-  
+    
 import Link from "next/link";
 import MainNavbar from "./lib/component/utilityCom/MainNavbar";
  
@@ -14,7 +14,7 @@ const getData = async()=>{
   }
 }
 
-export default async function Home({children}) {
+export default async function Page({children}) {
   const data = await getData()
 
   return (
@@ -24,8 +24,6 @@ export default async function Home({children}) {
 
            <MainNavbar data={data}/>
         </div>
-
-      <h1 className="text-4xl font-bold text-center">Welcome to Clerk Next.js Quickstart</h1>
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"> 
       hello babul how are you   
       <Link href={"/dashboard/pages/about"}>click her</Link>  

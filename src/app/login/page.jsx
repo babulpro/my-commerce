@@ -52,7 +52,8 @@ export default function Page(){
                 if (json.status === "ok") {
                     
                     toast.success('Wellcome To Home of Knowledge')
-                    window.location.replace("/")
+                    
+                    window.location.replace("/dashboard/pages/OurCabin")
                 } else {
                     toast.error("Please provide valid email and password");
                 }
@@ -66,15 +67,15 @@ export default function Page(){
  
     return(
         <div className="container m-auto bg-slate-700 min-h-1/2 items">
-            <div className="w-4/5 lg:py-10 py-4">
-                <div className="lg:w-2/3 auto p-8 m-auto shadow-2xl">
+            <div className="flex justify-center lg:py-10 py-4">
+                <div className=" auto p-8 m-auto shadow-2xl">
                         <form onSubmit={FormSubmitHandler}>
-                            <label for="email">Enter Your Email</label><br/>
+                            <label htmlFor="email">Enter Your Email</label><br/>
                             <input type='email' placeholder='email' value={data.email} onChange={(e)=>InputChange("email",e.target.value)} className="inputClass text-left" id="email"/> <br/><br/>
-                            <label for="password">Enter Your Password</label><br/>
+                            <label htmlFor="password">Enter Your Password</label><br/>
                             <input type="password" placeholder="********" value={data.password} onChange={(e)=>InputChange("password",e.target.value)} className="inputClass" id="password"/> <br/>
                             <div className="mt-8 ">
-                            <input type='submit' value='login' className="p-1 hover:text-slate-500 hover:animate-bounce "/><br/>
+                            <input type='submit' value='login' className="p-1 hover:text-slate-500 "/><br/>
                             <Link href="/login/registration" className="text-xs p-1 hover:text-slate-500 shadow-2xl">Don't have account?</Link>
                             <Link href="/login/forgetpassword" className="text-xs p-1 hover:text-slate-500 shadow-2xl">Forget password?</Link>
                             </div>
