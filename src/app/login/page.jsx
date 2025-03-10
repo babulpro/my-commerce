@@ -1,7 +1,7 @@
 "use client"
 
 import {  useState } from "react"
-import {useRouter} from 'next/navigation'
+// import {useRouter} from 'next/navigation'
 import Link from 'next/link'
 import toast from "react-hot-toast"
 
@@ -13,7 +13,7 @@ export default function Page(){
 
     
     const [data,setData]=useState({email:"",password:""})
-    const router= useRouter()
+    // const router= useRouter()
     
 
     const InputChange =(name,value)=>{
@@ -53,7 +53,8 @@ export default function Page(){
                     
                     toast.success('Wellcome To Home of Knowledge')
                     
-                    window.location.replace("/dashboard/pages/OurCabin")
+                    window.location.replace("/")
+                    // router.push("/")
                 } else {
                     toast.error("Please provide valid email and password");
                 }
