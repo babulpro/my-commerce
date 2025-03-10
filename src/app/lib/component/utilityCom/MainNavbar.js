@@ -35,23 +35,23 @@ const MainNavbar =async () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                          {
                             data.length>0 &&
-                            data.map((value,index)=><li key={{index}}>
-                                <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
+                            data.map((value,index)=><li key={value.id}>
+                                <Link href={`${value.link}`}>{value.name}</Link>
                             </li>)
                          }
-                        <li><a>Item 3</a></li>
+                         
                     </ul>
                 </div>
     <a className="btn btn-ghost text-xl">daisyUI</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
+       
 
       {
                             data.length>0 &&
-                            data.map((value,index)=><li>
-                                <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
+                            data.map((value,index)=><li key={value.id}>
+                                <Link href={`${value.link}`} key={value.id}>{value.name}</Link>
                             </li>)
                          }
     </ul>
