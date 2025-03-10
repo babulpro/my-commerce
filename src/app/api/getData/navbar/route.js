@@ -14,7 +14,7 @@ export async function POST(req) {
             return NextResponse.json({status:"fail",data:"already exist"})
         }
         const category =  await prisma.category.create({data:{
-            name:data.name
+            name:data.name,link:data.link
         }})
         return NextResponse.json({ status: "success", data: category });
     }

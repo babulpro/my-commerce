@@ -36,7 +36,7 @@ const MainNavbar =async () => {
                          {
                             data.length>0 &&
                             data.map((value,index)=><li>
-                                <Link href={`/dashboard/pages/category/${value.id}`} key={value.id}>{value.name}</Link>
+                                <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
                             </li>)
                          }
                         <li><a>Item 3</a></li>
@@ -51,7 +51,7 @@ const MainNavbar =async () => {
       {
                             data.length>0 &&
                             data.map((value,index)=><li>
-                                <Link href={`/dashboard/pages/category/${value.id}`} key={value.id}>{value.name}</Link>
+                                <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
                             </li>)
                          }
     </ul>
