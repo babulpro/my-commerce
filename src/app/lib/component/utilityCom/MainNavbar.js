@@ -3,22 +3,11 @@ import Link from "next/link";
 import React from "react";
  
 
-const getData = async()=>{
-    try{
-        let res= await fetch(`http://localhost:3000/api/getData/navbar`, { method: "GET" } ,{cache: 'no-store' })
-        const data = await res.json()
-        return data.data
 
-    }
-    catch(e){
-        return []
-    }
-}
- 
  
 
-const MainNavbar =async () => {
-    let data = await getData()
+const MainNavbar =async ({data}) => {
+    
     
  
     return (
@@ -35,7 +24,7 @@ const MainNavbar =async () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                          {
                             data.length>0 &&
-                            data.map((value,index)=><li>
+                            data.map((value,index)=><li key={index}>
                                 <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
                             </li>)
                          }
@@ -50,7 +39,7 @@ const MainNavbar =async () => {
 
       {
                             data.length>0 &&
-                            data.map((value,index)=><li>
+                            data.map((value,index)=><li key={index}>
                                 <Link href={`${value.link}?${value.id}`} key={value.id}>{value.name}</Link>
                             </li>)
                          }
@@ -59,7 +48,7 @@ const MainNavbar =async () => {
   <div className="navbar-end">
     
   <div>
-    //button
+    {/* //button */}
   </div>
 
         </div>
