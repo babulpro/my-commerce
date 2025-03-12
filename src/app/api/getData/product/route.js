@@ -11,7 +11,9 @@ export async function POST(req,res) {
             price:data.price,
             images:data.images,
             stock:data.stock,
-            categoryId:data.categoryId
+            categoryId:data.categoryId,
+            keywords:data.keywords
+        
         }})
 
         return NextResponse.json({status:"success",data:response})

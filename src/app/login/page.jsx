@@ -7,10 +7,6 @@ import toast from "react-hot-toast"
 
 
 export default function Page(){
-
-
-
-
     
     const [data,setData]=useState({email:"",password:""})
     // const router= useRouter()

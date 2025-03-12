@@ -3,20 +3,21 @@ import  bcrypt  from 'bcrypt';
 import { cookies } from "next/headers";
 import prisma from "@/app/lib/component/utilityCom/prisma/prisma";
 import { CreateJwtToken } from "@/app/lib/component/authFunction/JwtHelper";
+import { use } from "react";
 
  
 
 export async function POST(req, res) {
     const data = await req.json();
-    const email = data.email;
+   
 
-     
+      
 
     try {
-        if (!email) {
-            return NextResponse.json({ msg: "Invalid email" }, { status: 400 });
-        } 
-        const user = await prisma.user.findUnique({ where: { email } });
+        
+        const user = await prisma.user.findUnique({ where: { email:data.email } });
+        console.log(user)
+        
         
 
         if (!user) {
@@ -30,7 +31,7 @@ export async function POST(req, res) {
             return NextResponse.json({ msg: "Invalid email or password", status: "false" }, { status: 404 });
         }
         
-        const token = await CreateJwtToken(user.email);
+        const token = await CreateJwtToken(user.email,user.id);
         const response = NextResponse.json({ msg: "Login successful", status: "ok" });
         response.cookies.set({
             name: 'token',

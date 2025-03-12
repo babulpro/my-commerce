@@ -49,6 +49,7 @@ model Product {
   price       Float
   images      String[]
   stock       Int
+  keywords    String
   category    Category  @relation(fields: [categoryId], references: [id])
   categoryId  String    @db.ObjectId
   createdAt   DateTime  @default(now())
