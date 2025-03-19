@@ -5,7 +5,7 @@ import Link from "next/link";
  
 const getData = async(pageName)=>{
   try{
-      let res= await fetch(`http://localhost:3000/api/getData/product`, { method: "GET" } ,{cache: 'force-cache' })
+      let res= await fetch(`http://localhost:3000/api/getData/product`, { method: "GET" } ,{cache: 'no-store' })
       const data = await res.json()
       return data.data
 
@@ -29,7 +29,7 @@ export default async function Page({children}) {
 
 
         {
-          data.length>0 &&
+          
           data.map((value)=>{
             return(
                       <div key={value.id} className="card bg-base-100 w-96 shadow-sm pb -10">  
