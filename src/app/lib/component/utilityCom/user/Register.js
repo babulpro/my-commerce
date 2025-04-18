@@ -23,7 +23,7 @@ const Register = () => {
         
         try {
             const config = { method:"POST",headers:{ "Content-Type": "application/json" },body: JSON.stringify(data),};
-            let response = await fetch("/api/User", config);
+            let response = await fetch("/api/User/registation", config);
             let json = await response.json();
             if (json.status === "ok") {
                 setData({...initData})

@@ -1,8 +1,10 @@
 import { DecodedJwtToken } from "@/app/lib/component/authFunction/JwtHelper";
-import prisma from "@/app/lib/component/utilityCom/prisma/prisma";
+ 
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+ const { PrismaClient } = require("@prisma/client");
  
+ const prisma = new PrismaClient()
 
 export async function GET(req) {
     const cookieStore = await cookies()

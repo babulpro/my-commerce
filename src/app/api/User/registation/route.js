@@ -1,10 +1,11 @@
  
  
-import prisma from "@/app/lib/component/utilityCom/prisma/prisma";
 import { NextResponse } from "next/server";
 import  bcrypt  from 'bcrypt';
 import { CreateJwtToken } from "@/app/lib/component/authFunction/JwtHelper";
+const { PrismaClient } = require("@prisma/client");
 
+const prisma = new PrismaClient()
  
 
 export async function POST(req,res) { 
@@ -28,6 +29,8 @@ export async function POST(req,res) {
         lastName:data.lastName
       }
      })
+     console.log(newUser)
+     console.log(newUser)
      
      const token = await CreateJwtToken(data.email,newUser.id)
      const response = NextResponse.json({status:"success",msg:"Registration Successfull",data:newUser})

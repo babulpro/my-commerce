@@ -1,7 +1,4 @@
-import prisma from "@/app/lib/component/utilityCom/prisma/prisma";
- 
- 
- 
+                   
  
 import { NextResponse } from "next/server";
 

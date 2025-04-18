@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import  bcrypt  from 'bcrypt';
 import { cookies } from "next/headers";
-import prisma from "@/app/lib/component/utilityCom/prisma/prisma";
+ 
 import { CreateJwtToken } from "@/app/lib/component/authFunction/JwtHelper";
 import { use } from "react";
+const { PrismaClient } = require("@prisma/client");
 
+const prisma = new PrismaClient()
  
 
 export async function POST(req, res) {
