@@ -2,13 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from 'next/navigation'
+import Link from "next/link";
  
 
 const ProductPage = ({ params }) => {
-   
+  const searchParams = useSearchParams() 
+  const search = searchParams.get('type')
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [allData,setAllData]=useState(null)
+  
   
 
   useEffect(() => {
@@ -20,8 +25,11 @@ const ProductPage = ({ params }) => {
           `http://localhost:3000/api/getData/productDetails?id=${id}`,
           { method: "GET", cache: "force-cache" }
         );
+        const product =await fetch(`http://localhost:3000/api/getData/product`, { method: "GET" } ,{cache: 'no-store' })
         const result = await res.json();
+        const productRes = await product.json()
         setData(result.data);
+        setAllData(productRes.data)
         setSelectedImage(result.data?.images?.[0]); // Set first image as default
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -65,8 +73,10 @@ const ProductPage = ({ params }) => {
     }
   };
 
+  const filterData = allData.filter((value,index)=>value.keywords==search)
   
   return (
+    <div>
     <div className="min-h-screen md:px-5 pb-10 flex justify-center items-center">
       <div className="bg-white p-6 rounded-2xl shadow-lg md:flex gap-8 w-full max-w-3xl">
         {/* Image Section */}
@@ -112,6 +122,48 @@ const ProductPage = ({ params }) => {
             ADD TO CART
           </button>
         </div>
+      </div>
+      
+    </div>
+    <div className="mt-10 text-2xl">
+          <div className=" border-2 border-gray-200 rounded-lg shadow-lg">    
+              
+            <div className=" min-h-screen p-4 pb-20 font-[family-name:var(--font-geist-sans)]"> 
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        
+        
+                {
+                  
+                  filterData.map((value)=>{
+                    return(
+                              <div key={value.id} className="card bg-base-100 w-96 shadow-sm pb -10">  
+                                    <figure className="px-5 pt-10">
+                                      <Image
+                                      width={500}
+                                      height={500}
+                                      layout="responsive"
+                                        src={value.images[0]}
+                                        alt="Shoes"
+                                        className="rounded-xl" />
+                                    </figure>
+                                    <div className="card-body text-left">
+                                      <Link key={value.id} href={`/dashboard/pages/details/${value.id}`}><h2 className="card-title underline">{value.name}</h2></Link>
+                                      <p>{value.price}</p>
+                                       
+                                    </div>
+                                </div>
+                    )
+                  })
+                }
+                
+                
+                       
+                  
+                
+                </div> 
+               
+            </div>
+            </div>
       </div>
     </div>
   );
